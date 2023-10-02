@@ -77,26 +77,27 @@ def get_filters(city, month, day):
 
     while True:
         time = get_input("Do you want to filter as month, day, all or none? ", OPTIONS).lower()               
-        if time == 'month':
-            month = get_input("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()
-            day = 'all'
-            break
+        match time:
+            case 'month':
+                month = get_input("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()
+                day = 'all'
+                break
                     
-        elif time == 'day':
-            month = 'all'
-            day = get_input("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
-            break
+            case 'day':
+                month = 'all'
+                day = get_input("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
+                break
                     
-        elif time == 'all':
-            month = get_input("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()           
-            day = get_input("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
-            break       
-        elif time == 'none':
-            month = 'all'
-            day = 'all'
-            break       
-        else:
-            print("You wrote the wrong word! Try Again\n")
+            case 'all':
+                month = get_input("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()           
+                day = get_input("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
+                break       
+            case 'none':
+                month = 'all'
+                day = 'all'
+                break       
+            case _:
+                print("You wrote the wrong word! Try Again\n")
 
     print(city)
     print(month)
