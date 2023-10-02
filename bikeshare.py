@@ -10,7 +10,7 @@ MONTHS = ['january', 'february', 'march', 'april', 'may', 'june']
 OPTIONS = ['all', 'day', 'month', 'none']
 DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' ]
 
-def input_helper(message, valid_list):
+def get_input(message, valid_list):
     """
     An utility function to obtain user specific input value
 
@@ -76,20 +76,20 @@ def get_filters(city, month, day):
     city = city_input()
 
     while True:
-        time = input_helper("Do you want to filter as month, day, all or none? ", OPTIONS).lower()               
+        time = get_input("Do you want to filter as month, day, all or none? ", OPTIONS).lower()               
         if time == 'month':
-            month = input_helper("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()
+            month = get_input("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()
             day = 'all'
             break
                     
         elif time == 'day':
             month = 'all'
-            day = input_helper("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
+            day = get_input("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
             break
                     
         elif time == 'all':
-            month = input_helper("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()           
-            day = input_helper("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
+            month = get_input("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()           
+            day = get_input("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
             break       
         elif time == 'none':
             month = 'all'
