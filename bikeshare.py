@@ -28,7 +28,7 @@ def get_input(message, valid_list):
     
     return user_data
 
-def city_input():
+def get_city():
     '''
     This function starts the user interface by introduction and
     asking the user with the city he/she wants to analyze
@@ -73,7 +73,7 @@ def get_filters(city, month, day):
     """
     
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    city = city_input()
+    city = get_city()
 
     while True:
         time = get_input("Do you want to filter as month, day, all or none? ", OPTIONS).lower()               
