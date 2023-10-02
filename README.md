@@ -6,7 +6,7 @@
 Bikeshare Data Explorer!
 
 ### Description
-Describe what your project is about and what it does
+This project is data exploration python project that uses the numpy and pandas library.
 
 ### Files used
 Include the files used
