@@ -10,7 +10,7 @@ MONTHS = ['january', 'february', 'march', 'april', 'may', 'june']
 OPTIONS = ['all', 'day', 'month', 'none']
 DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' ]
 
-def input_helper(message, valid_list):
+def get_input(message, valid_list):
     """
     An utility function to obtain user specific input value
 
@@ -28,7 +28,7 @@ def input_helper(message, valid_list):
     
     return user_data
 
-def city_input():
+def get_city():
     '''
     This function starts the user interface by introduction and
     asking the user with the city he/she wants to analyze
@@ -73,30 +73,31 @@ def get_filters(city, month, day):
     """
     
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    city = city_input()
+    city = get_city()
 
     while True:
-        time = input_helper("Do you want to filter as month, day, all or none? ", OPTIONS).lower()               
-        if time == 'month':
-            month = input_helper("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()
-            day = 'all'
-            break
+        time = get_input("Do you want to filter as month, day, all or none? ", OPTIONS).lower()               
+        match time:
+            case 'month':
+                month = get_input("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()
+                day = 'all'
+                break
                     
-        elif time == 'day':
-            month = 'all'
-            day = input_helper("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
-            break
+            case 'day':
+                month = 'all'
+                day = get_input("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
+                break
                     
-        elif time == 'all':
-            month = input_helper("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()           
-            day = input_helper("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
-            break       
-        elif time == 'none':
-            month = 'all'
-            day = 'all'
-            break       
-        else:
-            print("You wrote the wrong word! Try Again\n")
+            case 'all':
+                month = get_input("Which month? January, Feburary, March, April, May or June? ", MONTHS).lower()           
+                day = get_input("Which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday? ", DAYS).lower()
+                break       
+            case 'none':
+                month = 'all'
+                day = 'all'
+                break       
+            case _:
+                print("You wrote the wrong word! Try Again\n")
 
     print(city)
     print(month)
